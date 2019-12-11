@@ -34,6 +34,7 @@ python visualize.py --h
 ```
 usage: visualize.py [-h] --input_file INPUT_FILE [--output_file OUTPUT_FILE]
                     [--summary] [--architecture] [--parameters]
+                    [--weights_only]
 
 A script for visualizing Pytorch model
 
@@ -46,6 +47,7 @@ optional arguments:
   --summary             Generate a keras-like model summary
   --architecture        Print model
   --parameters          Print parameters
+  --weights_only        Passing a weights_only model
 ```
 
 `summary` presents a table with `Layer`, `Output Shape` and `Param #` as columns. This is generated using [Torch Summary](https://github.com/sksq96/pytorch-summary) library.
@@ -53,6 +55,8 @@ optional arguments:
 `architecture` presents the model using Pytorch's `print()` method.
 
 `parameters` presents all weights in the network as complete tensors. This is generated using Pytorch's `named_parameters()` method. One can map `name` with a layer in `architecture`. 
+
+`weights_only` tells the script that you are passing a file with only weights, not the model definition.
 
 3. Run visualize with a sample model
 
@@ -76,10 +80,10 @@ Running this command should generate a `<model_name>.log` output file in `logs`.
 
 Note `<model_name>.pt` should be a complete Pytorch model file, meaning it should have both model architecture as well pretrained weights. If it is a weight-only file, you would observe the following error message - `AttributeError: 'collections.OrderedDict' object has no attribute 'eval` if using `--summary` option.
 
-To run a weight-only file, remove `--summary` and `--parameters` flags, like below
+To run a weight-only file, remove `--summary` and `--parameters` flags, and add `--weights_only` as shown below
 
 ```
-python visualize.py --architecture --input_file=models/imagenet_resnet18_acc_89.082_6.4x.pt --output_file=logs/imagenet_resnet18_acc_89.082_6.4x.log
+python visualize.py --architecture --weights_only --input_file=models/imagenet_resnet18_acc_89.082_6.4x.pt --output_file=logs/imagenet_resnet18_acc_89.082_6.4x.log
 ``` 
 
-This should print out the complete weights in log file.
+This should print out `(layer, tensor dimension, tensor data)` pairs in the log file.
