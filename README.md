@@ -41,7 +41,7 @@ A script for visualizing Pytorch model
 optional arguments:
   -h, --help            show this help message and exit
   --input_file INPUT_FILE
-                        Pytorch model file (.pth)
+                        Pytorch model file (.pt/.pth)
   --output_file OUTPUT_FILE
                         Human readable log file
   --summary             Generate a keras-like model summary

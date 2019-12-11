@@ -5,7 +5,7 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser(description='A script for visualizing Pytorch model')
-parser.add_argument("--input_file", default=None, required=True, type=str, help="Pytorch model file (.pth)")
+parser.add_argument("--input_file", default=None, required=True, type=str, help="Pytorch model file (.pt/.pth)")
 parser.add_argument("--output_file", default="output.log", type=str, help="Human readable log file")
 parser.add_argument("--summary", action="store_true", help="Generate a keras-like model summary")
 parser.add_argument("--architecture", action="store_true", help="Print model")
@@ -22,12 +22,6 @@ weights_only = args.weights_only
 
 original_stdout = sys.stdout
 sys.stdout = open(output_file, 'w+')
-
-## Error: given files are weights-only file
-## they do not have model architecture
-#model = torchvision.models.resnet18()
-#model.load_state_dict(torch.load('cifar10_resnet18_retrained_acc_94.130_41.8x_irregular.pt'))
-#model.eval()
 
 ## read model file (may be architecture+weights or weights only)
 model = torch.load(input_file)
