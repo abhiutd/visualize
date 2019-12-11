@@ -1,0 +1,10 @@
+# Ignore these folders
+models
+logs
+
+# Ignore all model files
+*.pt
+*.pth
+
+# Ignore all log files
+*.log
