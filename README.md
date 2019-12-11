@@ -1,4 +1,4 @@
-# VISUALIZE
+# Visualize
 A script for visualizing Pytorch models
 
 ### Dependencies
@@ -74,4 +74,4 @@ Replace `<model_name>` with your model file name. You can disable one or more of
 
 Running this command should generate a `<model_name>.log` output file in `logs`.
 
-Note `<model_name>.pt` should a complete Pytorch model file, meaning it should have both model architecture as well pretrained weights. If it is a weight-only file, you would the following error message - `AttributeError: 'collections.OrderedDict' object has no attribute 'eval`.
+Note `<model_name>.pt` should be a complete Pytorch model file, meaning it should have both model architecture as well pretrained weights. If it is a weight-only file, you would observe the following error message - `AttributeError: 'collections.OrderedDict' object has no attribute 'eval`.
