@@ -29,7 +29,8 @@ sys.stdout = open(output_file, 'w+')
 
 ## Expects a model file
 model = torch.load(input_file)
-model.eval()
+if give_summary:
+	model.eval()
 
 # print all elements of the tensor
 torch.set_printoptions(threshold=50000)
